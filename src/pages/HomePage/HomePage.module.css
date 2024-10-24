@@ -1,0 +1,137 @@
+
+.home {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-bottom: 32px;
+}
+
+.container {
+    max-width: 1312px;
+    margin: 0 auto;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(256px, 720px));
+    gap: 24px;
+    align-items: center;
+}
+
+.wrapper {
+    padding: 14% 9.5% 14% 7%;
+    background: #f8f8f8;
+    border-radius: 30px;
+}
+
+.title {
+    font-weight: 500;
+    font-size: clamp(24px, 6vw, 48px);
+    line-height: 1.16667;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+}
+
+.special {
+    font-style: italic;
+    font-weight: 400;
+    background-color: #FBE9BA;
+    border-radius: 10px;
+}
+
+.text {
+    line-height: 1.375;
+    letter-spacing: -0.02em;
+    margin-bottom: 64px;
+    max-width: 471px;
+}
+
+.btn {
+    border: transparent;
+    border-radius: 12px;
+    padding: 16px 85px;
+    width: 267px;
+    height: 60px;
+
+    background: #f4c550;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.55556;
+}
+
+.bottom {
+    border: 1.50px dashed #f4c550;
+    border-radius: 30px;
+    width: 100%;
+    max-width: 1312px;
+    margin: 0 auto;
+    grid-column: 1/-1;
+}
+
+.list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    padding: 40px 0;
+
+}
+
+.item {
+    display: flex;
+}
+
+.number {
+    font-weight: 500;
+    font-size: clamp(16px, 4vw, 28px);
+    line-height: 1.14286;
+    letter-spacing: -0.02em;
+    margin-right: 16px;
+}
+
+.value {
+    font-size: 14px;
+    line-height: 1.28571;
+    letter-spacing: -0.02em;
+    color: rgba(18, 20, 23, 0.7);
+}
+
+
+@media screen and (min-width: 780px) {
+    .container {
+        display: grid;
+        grid-template-areas:
+            "w p"
+            "b b";
+        gap: 24px;
+    }
+
+    .wrapper {
+        display: grid;
+        align-items: center;
+        grid-area: w;
+    }
+    
+    .picture {
+        grid-area: p;
+        align-self: start;
+        justify-self: start;
+    }
+    
+    .bottom {
+        grid-area: b;
+    }
+
+    .title {
+        font-weight: 500;
+        font-size: 48px;
+        line-height: 1.16667;
+        letter-spacing: -0.02em;
+    }
+
+    .list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 100px;
+    }
+
+    /* .value {
+        max-width: 96px;
+    } */
+}
