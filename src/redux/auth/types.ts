@@ -10,5 +10,7 @@ export interface ErrorResponse {
 }
 
 export interface AuthResponse {
-    accessToken: string;
+    data: {
+        accessToken: string;
+    };
 }
