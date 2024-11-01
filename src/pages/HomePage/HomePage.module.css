@@ -2,23 +2,35 @@
 .home {
     max-width: 1440px;
     margin: 0 auto;
-    padding-bottom: 32px;
+    padding: 20px 0;
 }
 
 .container {
     max-width: 1312px;
     margin: 0 auto;
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(auto-fit, minmax(256px, 720px));
-    gap: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    margin: 0 auto;
+    gap: 24px;
+    margin-bottom: 24px;
 }
 
 .wrapper {
-    padding: 14% 9.5% 14% 7%;
-    background: #f8f8f8;
     border-radius: 30px;
+    min-width: 280px;
+    background: #f8f8f8;
+    padding: 30px 25px;
+}
+
+.picture {
+    border-radius: 30px;
+    min-width: 280px;
 }
 
 .title {
@@ -62,19 +74,18 @@
     width: 100%;
     max-width: 1312px;
     margin: 0 auto;
-    grid-column: 1/-1;
 }
 
 .list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 40px;
-    padding: 40px 0;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 40px;
 }
 
 .item {
     display: flex;
+    align-items: center;
 }
 
 .number {
@@ -86,6 +97,7 @@
 }
 
 .value {
+    width: 92px;
     font-size: 14px;
     line-height: 1.28571;
     letter-spacing: -0.02em;
@@ -94,29 +106,24 @@
 
 
 @media screen and (min-width: 780px) {
-    .container {
-        display: grid;
-        grid-template-areas:
-            "w p"
-            "b b";
-        gap: 24px;
+    .box {
+        flex-direction: row;
+        align-items: start;
     }
 
     .wrapper {
-        display: grid;
-        align-items: center;
-        grid-area: w;
+        border-radius: 30px;
+        max-width: 720px;
+        background: #f8f8f8;
+        padding: 98px 64px;
     }
-    
+
     .picture {
-        grid-area: p;
-        align-self: start;
-        justify-self: start;
-    }
-    
-    .bottom {
-        grid-area: b;
-    }
+        border-radius: 30px;
+        max-width: 568px;
+        height: 530px;
+    } 
+
 
     .title {
         font-weight: 500;
@@ -126,12 +133,6 @@
     }
 
     .list {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 100px;
+        flex-direction: row;
     }
-
-    /* .value {
-        max-width: 96px;
-    } */
 }

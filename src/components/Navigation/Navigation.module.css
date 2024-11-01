@@ -1,0 +1,13 @@
+
+
+.nav {
+    display: flex;
+    gap: 28px;
+    /* margin-right: auto; */
+    margin: 0 auto;
+}
+
+.link {
+    padding: 14px 0;
+    line-height: 1.25;
+}
