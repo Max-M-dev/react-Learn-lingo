@@ -1,7 +1,7 @@
 
 
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { selectIsLoggedIn } from '../../redux/auth/selectors';
 import Navigation from '../Navigation/Navigation';
 import Logo from '../Logo/Logo';
@@ -37,6 +37,20 @@ const AppBar: React.FC<AppBarProps> = () => {
         setIsLoginOpen(false);
         setIsRegisterOpen(false);
     };
+
+    useEffect(() => {
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') {
+                closeModal(); 
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, []); 
 
     return (
         <header className={css.head}>

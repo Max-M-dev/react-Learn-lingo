@@ -1,6 +1,6 @@
 // import { useState } from 'react'
 
-import { lazy, useState } from "react";
+import { lazy, useState, useEffect } from "react";
 
 import { Route, Routes } from 'react-router-dom';
 import Layout from '../Layout/Layout';
@@ -21,6 +21,20 @@ function App() {
   const closeModal = () => {
     setIsRegisterOpen(false);
   };
+
+  useEffect(() => {
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') {
+                closeModal(); 
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, []); 
 
   return (
     <>
