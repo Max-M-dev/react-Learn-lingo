@@ -1,14 +1,12 @@
 
 import css from './UserWelcome.module.css';
 
-const UserWelcome = () => {
+interface UserWelcomeProps {
+    onLoginClick: () => void;
+    onRegisterClick: () => void;
+}
 
-    // const login = document.querySelector('.login');
-    // const register = document.querySelector('.register');
-
-    // const openModal = () => {
-
-    // }
+const UserWelcome: React.FC<UserWelcomeProps> = ({onLoginClick, onRegisterClick}) => {
 
     return (
         <ul className={css.list}>
@@ -17,12 +15,12 @@ const UserWelcome = () => {
                     <use href="./images/sprite.svg#icon-login" >
                     </use>
                 </svg>
-                <button className={css.login}>
+                <button className={css.login} onClick={onLoginClick}>
                     Log in
                 </button>
             </li>
             <li className={css.item}>
-                <button className={css.register}>
+                <button className={css.register} onClick={onRegisterClick}>
                     Registration
                 </button>
             </li>

@@ -10,7 +10,11 @@ interface FormValues {
     password: string;
 }
 
-export default function LoginForm() {
+interface LoginFormProps {
+    onClose: () => void;
+}
+
+export const LoginForm: React.FC<LoginFormProps> = ({onClose}) => {
     const dispatch = useAppDispatch();
 
     const Validator = Yup.object().shape({
@@ -26,41 +30,51 @@ export default function LoginForm() {
     const handleSubmit = (values: FormValues, actions: FormikHelpers<FormValues>) => {
         dispatch(logIn(values));
         actions.resetForm();
+        onClose();
+    };
+
+    const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
+        if (event.currentTarget === event.target) {
+            onClose();
+        }
     };
 
 
     return (
-        <Formik
-            initialValues={initialValues}
-            validationSchema={Validator}
-            onSubmit={handleSubmit}
-            className={css.backdrop}>
-            <Form className={css.form}>
-                <button type='button' className={css.close}>
-                    <svg width="32" height="32" className={css.icon}>
-                        <use href="./images/sprite.svg#icon-close" >
-                        </use>
-                    </svg>
-                </button>
-                <h2 className={css.title}>Log In</h2>
-                <p className={css.text}>Welcome back! Please enter your credentials to access your account and continue your search for an teacher.</p>
-                <div className={css.container}>
-                    <Field className={css.input} type="text" name="email" autoComplete="true" placeholder="Email" />
-                    <ErrorMessage className={css.error} name="email" component="div" />
-                    
-                    <div className={css.label}>
-                        <Field className={css.input} type="text" name="password" autoComplete="true" placeholder="Password"/>
-                        <ErrorMessage className={css.error} name="password" component="div" />
-                        <button type='button' className={css.open}>
-                            <svg width="20" height="20" className={css.eye}>
-                                <use href="./images/sprite.svg#icon-eye" >
-                                </use>
-                            </svg>
-                        </button>
+        <div className={`${css.backdrop} ${css.isOpen}`} onClick={handleBackdropClick}>
+            <Formik
+                initialValues={initialValues}
+                validationSchema={Validator}
+                onSubmit={handleSubmit}
+                >
+                <Form className={css.form} >
+                    <button type='button' className={css.close} onClick={onClose}>
+                        <svg width="32" height="32" className={css.icon}>
+                            <use href="./images/sprite.svg#icon-close" >
+                            </use>
+                        </svg>
+                    </button>
+                    <h2 className={css.title}>Log In</h2>
+                    <p className={css.text}>Welcome back! Please enter your credentials to access your account and continue your search for an teacher.</p>
+                    <div className={css.container}>
+                        <Field className={css.input} type="text" name="email" autoComplete="true" placeholder="Email" />
+                        <ErrorMessage className={css.error} name="email" component="div" />
+                        
+                        <div className={css.label}>
+                            <Field className={css.input} type="text" name="password" autoComplete="true" placeholder="Password"/>
+                            <ErrorMessage className={css.error} name="password" component="div" />
+                            <button type='button' className={css.open}>
+                                <svg width="20" height="20" className={css.eye}>
+                                    <use href="./images/sprite.svg#icon-eye" >
+                                    </use>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
-                </div>
-                <button className={css.btn} type="submit">Log In</button>
-            </Form>
-        </Formik>
+                    <button className={css.btn} type="submit">Log In</button>
+                </Form>
+            </Formik>
+        </div>
+        
     );
 }

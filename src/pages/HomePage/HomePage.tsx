@@ -1,8 +1,6 @@
 
 import css from './HomePage.module.css';
 
-import LoginForm from '../../components/LoginForm/LoginForm';
-
 const HomePage = () => {
     return (
         <main className={css.home} >
@@ -37,7 +35,6 @@ const HomePage = () => {
                         </li>
                     </ul>
                 </div>
-                <LoginForm />
             </div>
         </main>
     )
