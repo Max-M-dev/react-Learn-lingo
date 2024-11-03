@@ -11,6 +11,10 @@ export interface ErrorResponse {
 
 export interface AuthResponse {
     data: {
-        accessToken: string;
+        accessToken: string | null;
+        user: {
+            name: string | null;
+            email: string | null;
+        };
     };
 }

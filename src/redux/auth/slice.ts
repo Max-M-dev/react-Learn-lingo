@@ -3,10 +3,10 @@ import { register, logIn, logOut, refreshUser } from './operations';
 
 const authInitialState = {
     user: {
-        name: null,
-        email: null,
+        name: null as string | null,
+        email: null as string | null,
     },
-    accessToken: null,
+    accessToken: null as string | null,
     isLoggedIn: false,
     isRefreshing: false,
     isLoading: false,
