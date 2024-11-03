@@ -12,14 +12,16 @@ import { RegistrationForm } from '../RegistrationForm/RegistrationForm';
 
 import css from './AppBar.module.css';
 
-const AppBar = () => {
+interface AppBarProps {
+    onOpenRegister: () => void;
+}
+
+const AppBar: React.FC<AppBarProps> = () => {
 
     const isLoggedIn = useSelector(selectIsLoggedIn);
 
     const [isLoginOpen, setIsLoginOpen] = useState(false);
     const [isRegisterOpen, setIsRegisterOpen] = useState(false);
-    // const openModal = () => setIsOpen(true);
-    // const closeModal = () => setIsOpen(false);
 
     const openLoginModal = () => {
         setIsLoginOpen(true);

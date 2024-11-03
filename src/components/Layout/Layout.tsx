@@ -5,13 +5,14 @@ import AppBar from '../AppBar/AppBar';
 
 interface LayoutProps {
     children: ReactNode;
+    onOpenRegister: () => void;
 }
 
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout: React.FC<LayoutProps> = ({ children, onOpenRegister }: LayoutProps) => {
     return (
         <div>
-            <AppBar />
+            <AppBar onOpenRegister={onOpenRegister} />
             <Suspense fallback={null}>{children}</Suspense>
         </div>
     )

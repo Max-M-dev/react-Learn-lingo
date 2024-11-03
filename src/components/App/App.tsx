@@ -1,6 +1,6 @@
 // import { useState } from 'react'
 
-import { lazy } from "react";
+import { lazy, useState } from "react";
 
 import { Route, Routes } from 'react-router-dom';
 import Layout from '../Layout/Layout';
@@ -9,20 +9,30 @@ const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
 const NotFoundPage = lazy(() => import('../../pages/NotFoundPage/NotFoundPage.jsx'));
 
 import './App.css'
+import { RegistrationForm } from "../RegistrationForm/RegistrationForm.js";
 
 function App() {
-  // const [count, setCount] = useState(0)
+  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+
+  const openRegisterModal = () => {
+    setIsRegisterOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsRegisterOpen(false);
+  };
 
   return (
     <>
-      <Layout>
+      <Layout onOpenRegister={openRegisterModal}>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage onRegisterClick={openRegisterModal} />} />
           <Route
             path="*"
             element={<NotFoundPage />}
           />
         </Routes>
+        {isRegisterOpen && <RegistrationForm onClose={closeModal}/>}
       </Layout>
     </>
   )

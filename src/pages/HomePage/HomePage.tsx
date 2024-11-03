@@ -1,7 +1,11 @@
 
 import css from './HomePage.module.css';
 
-const HomePage = () => {
+interface HomePageProps {
+    onRegisterClick: () => void;
+}
+
+const HomePage: React.FC<HomePageProps> = ({ onRegisterClick})  => {
     return (
         <main className={css.home} >
             <div className={css.container}>
@@ -9,7 +13,7 @@ const HomePage = () => {
                     <div className={css.wrapper}>
                         <h1 className={css.title}>Unlock your potential with the best  <span className={css.special}>language</span> tutors</h1>
                         <p className={css.text}>Embark on an Exciting Language Journey with Expert Language Tutors: Elevate your language proficiency to new heights by connecting with highly qualified and experienced tutors.</p>
-                        <button className={css.btn}>Get started</button>
+                        <button className={css.btn} onClick={onRegisterClick}>Get started</button>
                     </div>
                     <div className={css.picture}>
                         <img srcSet="./images/hero.png 1x, ./images/hero@2x.png 2x" src="./images/hero.png" alt="Girl with a laptop" />
