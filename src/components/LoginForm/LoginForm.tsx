@@ -1,11 +1,14 @@
 
-import { useAppDispatch } from '../../redux/store';
-import { logIn } from '../../redux/auth/operations';
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import css from './LoginForm.module.css';
 
-interface FormValues {
+import { useAppDispatch } from "../../redux/store";
+
+import { logIn } from "../../redux/auth/operations";
+
+export interface FormValues {
+    name?: string;
     email: string;
     password: string;
 }
@@ -15,7 +18,6 @@ interface LoginFormProps {
 }
 
 export const LoginForm: React.FC<LoginFormProps> = ({onClose}) => {
-    const dispatch = useAppDispatch();
 
     const Validator = Yup.object().shape({
         email: Yup.string().email("Invalid email address!").required("Required!"),
@@ -26,6 +28,8 @@ export const LoginForm: React.FC<LoginFormProps> = ({onClose}) => {
         email: "",
         password: "",
     };
+
+    const dispatch = useAppDispatch();
 
     const handleSubmit = (values: FormValues, actions: FormikHelpers<FormValues>) => {
         dispatch(logIn(values));

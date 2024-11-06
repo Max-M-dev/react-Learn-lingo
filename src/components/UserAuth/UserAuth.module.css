@@ -1,0 +1,19 @@
+
+.container {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    fill: none;
+    stroke: #F4C550;
+    stroke-width: 2;
+    margin-right: 8px;
+}
+
+.btn {
+    background-color: transparent;
+    border: transparent;
+    font-weight: 700;
+    line-height: 1.25;
+}

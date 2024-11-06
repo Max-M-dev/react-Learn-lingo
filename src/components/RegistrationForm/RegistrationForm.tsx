@@ -1,9 +1,9 @@
+import { useAppDispatch } from "../../redux/store";
+import { register } from "../../redux/auth/operations";
 
-import { useAppDispatch } from '../../redux/store';
-import { register } from '../../redux/auth/operations';
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
-import css from './RegistrationForm.module.css';
+import css from './RegistrationForm.module.css'
 
 interface FormValues {
     name: string;
@@ -16,7 +16,6 @@ interface RegisterFormProps {
 }
 
 export const RegistrationForm: React.FC<RegisterFormProps> = ({onClose}) => {
-    const dispatch = useAppDispatch();
 
     const Validator = Yup.object().shape({
         name: Yup.string().min(3).max(15).required("Required!"),
@@ -29,6 +28,8 @@ export const RegistrationForm: React.FC<RegisterFormProps> = ({onClose}) => {
         email: "",
         password: "",
     };
+
+    const dispatch = useAppDispatch();
 
     const handleSubmit = (values: FormValues, actions: FormikHelpers<FormValues>) => {
         dispatch(register(values));

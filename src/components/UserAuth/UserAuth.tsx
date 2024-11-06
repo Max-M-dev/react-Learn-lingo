@@ -8,8 +8,8 @@ const UserAuth = () => {
 
     return (
         <div className={css.container}>
-            <svg width="136" height="16">
-                <use href="/sprite.svg#icon-login" >
+            <svg width="20" height="20" className={css.icon}>
+                <use href="./images/sprite.svg#icon-login" >
                 </use>
             </svg>
             <button className={css.btn} type="button" onClick={() => dispatch(logOut())}>
