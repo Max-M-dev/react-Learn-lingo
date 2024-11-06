@@ -1,0 +1,35 @@
+
+
+.list {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 20px;
+    width: 583px;
+}
+
+.item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.label {
+    font-weight: 500;
+    line-height: 1.28571;
+    color: #8a8a89;
+}
+
+.select {
+    position: relative;
+    padding: 14px  4px 14px 18px;
+    border-radius: 14px;
+    border: transparent;
+    border-right: 14px solid transparent;
+
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.11111;
+}

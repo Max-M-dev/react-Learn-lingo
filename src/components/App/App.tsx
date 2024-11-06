@@ -6,7 +6,9 @@ import { Route, Routes } from 'react-router-dom';
 import Layout from '../Layout/Layout';
 
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
-const NotFoundPage = lazy(() => import('../../pages/NotFoundPage/NotFoundPage.jsx'));
+const TeachersPage = lazy(() => import('../../pages/TeachersPage/TeachersPage'));
+const FavoritesPage = lazy(() => import('../../pages/FavoritesPage/FavoritesPage'));
+const NotFoundPage = lazy(() => import('../../pages/NotFoundPage/NotFoundPage'));
 
 import './App.css'
 import { RegistrationForm } from "../RegistrationForm/RegistrationForm.js";
@@ -41,6 +43,8 @@ function App() {
       <Layout onOpenRegister={openRegisterModal}>
         <Routes>
           <Route path="/" element={<HomePage onRegisterClick={openRegisterModal} />} />
+          <Route path="/teachers" element={<TeachersPage />} />
+          <Route path="/favorites" element={<FavoritesPage />} />
           <Route
             path="*"
             element={<NotFoundPage />}
