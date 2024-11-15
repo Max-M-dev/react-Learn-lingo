@@ -1,7 +1,6 @@
 
 import { createAsyncThunk} from '@reduxjs/toolkit';
-// import { ErrorResponse, AuthResponse } from './types';
-// import { RootState } from '../store';
+
 
 
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "firebase/auth";

@@ -2,7 +2,9 @@
 
 import { lazy, useState, useEffect } from "react";
 
-import { Route, Routes } from 'react-router-dom';
+import { useSelector } from "react-redux";
+
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import Layout from '../Layout/Layout';
 
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
@@ -12,9 +14,15 @@ const NotFoundPage = lazy(() => import('../../pages/NotFoundPage/NotFoundPage'))
 
 import './App.css'
 import { RegistrationForm } from "../RegistrationForm/RegistrationForm.js";
+import { selectIsLoggedIn } from "../../redux/auth/selectors.js";
+
 
 function App() {
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const navigate = useNavigate();
+  const [redirect, setRedirect] = useState(false);
 
   const openRegisterModal = () => {
     setIsRegisterOpen(true);
@@ -36,7 +44,16 @@ function App() {
         return () => {
             window.removeEventListener('keydown', handleKeyDown);
         };
-    }, []); 
+  }, []); 
+  
+  useEffect(() => {
+    if (isLoggedIn && !redirect) {
+      if (window.location.pathname !== "/teachers") {
+        navigate("/teachers"); 
+        setRedirect(true);
+      }
+    }
+  }, [isLoggedIn, navigate, redirect]);
 
   return (
     <>

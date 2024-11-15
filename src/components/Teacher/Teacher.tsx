@@ -1,17 +1,39 @@
 
 import css from './Teacher.module.css'
 
-const Teacher = () => {
+interface TeacherProps {
+    teacher: {
+        id: string;
+        avatar_url: string;
+        name: string;
+        surname: string;
+        languages: [];
+        lessons_done: number;
+        rating: number;
+        level: string;
+        price_per_hour: string;
+        lesson_info: string;
+        conditions: string;
+        levels: [];
+    };
+}
+
+
+
+const Teacher: React.FC<TeacherProps> = ({ teacher }) => {
+    
+    const levels = teacher.levels;
+
     return (
         <div className={css.container}>
             <div className={css.box}>
-                <img className={css.image} srcSet="./images/logo.png 1x, ./images/logo@2x.png 2x" src="./images/logo.png" alt="Logo" />
+                <img className={css.image} src={teacher.avatar_url} alt="Logo" />
             </div>
             <div className={css.wrapper}>
                 <div className={css.top}>
                     <div className={css.title}>
                         <p className={css.grey}>Languages</p>
-                        <h3 className={css.name}>Jane Smith</h3>
+                        <h3 className={css.name}>{teacher.name} {teacher.surname}</h3>
                     </div>
                     <div className={css.info}>
                         <ul className={css.list}>
@@ -28,7 +50,7 @@ const Teacher = () => {
                             </span>
                             <span className={css.decor}>
                                 <li className={css.item}>
-                                    <p className={css.text}>Lessons done: 1098</p>
+                                    <p className={css.text}>Lessons done: {teacher.lessons_done}</p>
                                 </li>
                             </span>
                             <span className={css.decor}>
@@ -37,11 +59,11 @@ const Teacher = () => {
                                         <use href="./images/sprite.svg#icon-star" >
                                         </use>
                                     </svg>
-                                    <p className={css.text}>Rating: 4.8</p>
+                                    <p className={css.text}>Rating: {teacher.rating}</p>
                                 </li>
                             </span>
                             <li className={css.item}>
-                                <p className={css.text}>Price / 1 hour: <span className={css.dollar}>30$</span> </p>
+                                <p className={css.text}>Price / 1 hour: <span className={css.dollar}>{teacher.price_per_hour}$</span> </p>
                             </li>
                         </ul>
                         <svg width="26" height="26" className={css.heart}>
@@ -53,20 +75,20 @@ const Teacher = () => {
                 <ul className={css.middle}>
                     <li className={css.li}>
                         <p className={css.grey}>Speaks:</p>
-                        <p className={css.lang}>German, French</p>
+                        <p className={css.lang}>{teacher.languages.join(', ')}</p>
                     </li>
                     <li className={css.li}>
                         <p className={css.grey}>Lesson Info:</p>
-                        <p className={css.text}>Lessons are structured to cover grammar, vocabulary, and practical usage of the language.</p>
+                        <p className={css.text}>{teacher.lesson_info}</p>
                     </li>
                     <li className={css.li}>
                         <p className={css.grey}>Conditions:</p>
-                        <p className={css.text}>Welcomes both adult learners and teenagers (13 years and above).Provides personalized study plans</p>
+                        <p className={css.text}>{teacher.conditions}</p>
                     </li>
                 </ul>
                 <button type="button" className={css.btn}>Read more</button>
                 <ul className={css.bottom}>
-                    <li className={css.level}>
+                    {/* <li className={css.level}>
                         <p className={css.paragraph}>#A1 Beginner</p>
                     </li>
                     <li className={css.level}>
@@ -77,7 +99,12 @@ const Teacher = () => {
                     </li>
                     <li className={css.level}>
                         <p className={css.paragraph}>#B2 Upper-Intermediate</p>
-                    </li>
+                    </li> */}
+                    {levels.map((level, index) => (
+                        <li key={index} className={css.level}>
+                            <p className={css.paragraph}>#{level}</p>
+                        </li>
+                    ))}
                 </ul>
             </div>
         </div>

@@ -1,6 +1,7 @@
 
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getDatabase } from "firebase/database";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
 const AUTH_DOMAIN = import.meta.env.VITE_AUTH_DOMAIN
@@ -19,8 +20,10 @@ const firebaseConfig = {
     storageBucket: STORAGE_BUCKET,
     messagingSenderId: MESSAGING_SENDER_ID,
     appId: APP_ID,
-    measurementId: MEASUREMENT_ID
+    measurementId: MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+
+export const database = getDatabase(app);

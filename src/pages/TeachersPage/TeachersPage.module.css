@@ -4,3 +4,10 @@
     padding: 96px 126px;
     background: #f8f8f8;
 }
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 1184px;
+    margin: 0 auto;
+}

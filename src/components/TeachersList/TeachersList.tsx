@@ -2,29 +2,31 @@
 
 import Teacher from '../Teacher/Teacher'
 
-// import { useSelector } from "react-redux";
-// import { selectFilteredCampers } from "../../redux/campers/selectors.js";
-
+import { useSelector } from "react-redux";
+import { selectFilteredTeachers } from '../../redux/teachers/selectors';
 import css from './TeachersList.module.css'
 
-const TeachersList = () => {
+interface TeachersListProps {
+    load: () => void;
+}
 
-    // const campers = useSelector(selectFilteredCampers);
+const TeachersList: React.FC<TeachersListProps> = ({ load }) =>  {
+
+    const teachers = useSelector(selectFilteredTeachers);
 
     return (
-        <div>
-            {/* {campers.length === 0 ? (
-                <p>No campers found</p>
+        <div className={css.container}>
+            {teachers.length === 0 ? (
+                <p>No teachers found</p>
             ) : (
                 <ul>
-                    {campers.map(camper => (
-                        <li key={camper.id}>
-                            <Vehicle camper={camper} />
+                    {teachers.map(teacher => (
+                        <li key={teacher.id}>
+                            <Teacher teacher={teacher} />
                         </li>
                     ))}
-                </ul>)} */}
-            <Teacher/>
-            <button className={css.more} type="button">Load more</button>
+                </ul>)}
+            <button className={css.more} onClick={load} type="button">Load more</button>
         </div>
     )
 }

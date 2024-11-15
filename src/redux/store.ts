@@ -13,6 +13,8 @@ import {
 import storage from 'redux-persist/lib/storage';
 
 import { authReducer } from './auth/slice';
+import { teachersReducer } from './teachers/slice';
+import { filtersReducer } from './filters/slice';
 import { useDispatch } from 'react-redux';
 
 const persistConfig = {
@@ -20,9 +22,12 @@ const persistConfig = {
     storage,
 };
 
+
 export const store = configureStore({
     reducer: {
         auth: persistReducer(persistConfig, authReducer),
+        teachers: teachersReducer,
+        filters: filtersReducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

@@ -1,31 +1,50 @@
 
-// import { useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { fetchContacts } from '../../redux/contacts/operations.js'
-// import { selectError, selectIsLoading } from '../../redux/contacts/selectors.js';
+import { useEffect, useState, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchTeachers } from '../../redux/teachers/operations.js'
+import { selectError, selectIsLoading } from '../../redux/teachers/selectors.js';
+import { AppDispatch } from '../../redux/store.js';
+
+import { RootState } from '../../redux/store.js';
 
 import TeachersList from '../../components/TeachersList/TeachersList'
-// import ContactForm from '../../components/ContactForm/ContactForm.jsx';
 import Filters from '../../components/Filters/Filters'
 import css from './TeachersPage.module.css'
 
 export default function TeachersPage() {
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
 
-    // const error = useSelector(selectError);
-    // const isLoading = useSelector(selectIsLoading);
+    const error = useSelector(selectError);
+    const isLoading = useSelector(selectIsLoading);
 
-    // useEffect(() => {
-    //     dispatch(fetchContacts());
-    // }, [dispatch]);
+    const [page, setPage] = useState(1);
+    const limit = 5;
+
+    const filters = useSelector((state: RootState) => state.filters);
+
+    const performSearch = useCallback(() => {
+        setPage(1);
+        dispatch(fetchTeachers({ page: 1, limit, filters }));
+    }, [dispatch, limit, filters]);
+
+    useEffect(() => {
+        dispatch(fetchTeachers({ page, limit, filters }));
+    }, [dispatch, page, filters]);
+
+
+    const handleLoadMore = () => {
+        setPage(prevPage => prevPage + 1);
+    };
+
+
 
     return (
         <main className={css.container}>
-            {/* {isLoading && <p>Loading contacts...</p>}
-            {error && <p>{error}</p>} */}
+            {isLoading && <p>Loading teachers...</p>}
+            {error && <p>{error}</p>}
             <div className={css.wrapper}>
-                <Filters/>
-                <TeachersList />
+                <Filters onSearch={performSearch} />
+                <TeachersList load={handleLoadMore} />
             </div>
         </main>
     )

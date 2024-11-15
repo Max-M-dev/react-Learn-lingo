@@ -3,7 +3,7 @@ import { useState } from "react"
 import css from "./Filters.module.css";
 
 
-const Filters = () => {
+const Filters = ({onSearch}) => {
 
     const [selected, setSelected] = useState("");
 
