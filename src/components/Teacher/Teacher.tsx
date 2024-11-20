@@ -4,17 +4,17 @@ import css from './Teacher.module.css'
 interface TeacherProps {
     teacher: {
         id: string;
-        avatar_url: string;
+        avatar_url?: string;
         name: string;
-        surname: string;
-        languages: [];
-        lessons_done: number;
-        rating: number;
-        level: string;
-        price_per_hour: string;
-        lesson_info: string;
-        conditions: string;
-        levels: [];
+        surname?: string;
+        languages?: [];
+        lessons_done?: number;
+        rating?: number;
+        level?: string;
+        price_per_hour?: string;
+        lesson_info?: string;
+        conditions?: string;
+        levels?: [];
     };
 }
 
@@ -75,7 +75,7 @@ const Teacher: React.FC<TeacherProps> = ({ teacher }) => {
                 <ul className={css.middle}>
                     <li className={css.li}>
                         <p className={css.grey}>Speaks:</p>
-                        <p className={css.lang}>{teacher.languages.join(', ')}</p>
+                        <p className={css.lang}>{teacher.languages?.join(', ') || 'No languages'}</p>
                     </li>
                     <li className={css.li}>
                         <p className={css.grey}>Lesson Info:</p>
@@ -88,19 +88,7 @@ const Teacher: React.FC<TeacherProps> = ({ teacher }) => {
                 </ul>
                 <button type="button" className={css.btn}>Read more</button>
                 <ul className={css.bottom}>
-                    {/* <li className={css.level}>
-                        <p className={css.paragraph}>#A1 Beginner</p>
-                    </li>
-                    <li className={css.level}>
-                        <p className={css.paragraph}>#A2 Elementary</p>
-                    </li>
-                    <li className={css.level}>
-                        <p className={css.paragraph}>#B1 Intermediate</p>
-                    </li>
-                    <li className={css.level}>
-                        <p className={css.paragraph}>#B2 Upper-Intermediate</p>
-                    </li> */}
-                    {levels.map((level, index) => (
+                    {levels?.map((level, index) => (
                         <li key={index} className={css.level}>
                             <p className={css.paragraph}>#{level}</p>
                         </li>
