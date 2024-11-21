@@ -1,0 +1,27 @@
+
+.star {
+    fill: #ffc531;
+    margin-right: 4px;
+}
+
+.top {
+    display: flex;
+    flex-direction: column;
+    margin-top: 32px;
+}
+
+.name {
+    line-height: 1.5;
+    color: #8a8a89;
+}
+
+.bottom {
+    display: flex;
+    align-items: center;
+    margin-top: 2px;
+}
+
+.rating {
+    font-size: 14px;
+    line-height: 1.28571;
+}

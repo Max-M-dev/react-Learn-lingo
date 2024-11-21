@@ -6,6 +6,8 @@ import { useSelector } from "react-redux";
 import { selectFilteredTeachers } from '../../redux/teachers/selectors';
 import css from './TeachersList.module.css'
 
+import BookForm from '../BookForm/BookForm';
+
 interface TeachersListProps {
     load: () => void;
 }
@@ -27,6 +29,7 @@ const TeachersList: React.FC<TeachersListProps> = ({ load }) =>  {
                     ))}
                 </ul>)}
             <button className={css.more} onClick={load} type="button">Load more</button>
+            <BookForm/>
         </div>
     )
 }

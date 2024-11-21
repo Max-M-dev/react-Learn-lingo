@@ -1,7 +1,10 @@
 
 import css from './Teacher.module.css'
 
-interface TeacherProps {
+import React, { useState } from 'react';
+import Coments from '../Coments/Coments';
+
+export interface TeacherProps {
     teacher: {
         id: string;
         avatar_url?: string;
@@ -15,14 +18,24 @@ interface TeacherProps {
         lesson_info?: string;
         conditions?: string;
         levels?: [];
+        experience?: string;
+        reviews?: [{
+            comment?: string;
+            reviewer_name?: string;
+            reviewer_rating?: number;
+        }];
     };
 }
-
-
 
 const Teacher: React.FC<TeacherProps> = ({ teacher }) => {
     
     const levels = teacher.levels;
+
+    const [isComentsOpen, setIsComentsOpen] = useState(false);
+
+    const toggleComents = () => {
+        setIsComentsOpen((prev) => !prev);
+    };
 
     return (
         <div className={css.container}>
@@ -86,7 +99,10 @@ const Teacher: React.FC<TeacherProps> = ({ teacher }) => {
                         <p className={css.text}>{teacher.conditions}</p>
                     </li>
                 </ul>
-                <button type="button" className={css.btn}>Read more</button>
+                <button onClick={toggleComents} className={css.btn}> {isComentsOpen ? '' : 'Read more'}</button>
+                {isComentsOpen && (
+                    <Coments teacher={teacher} />
+                )}
                 <ul className={css.bottom}>
                     {levels?.map((level, index) => (
                         <li key={index} className={css.level}>
@@ -94,6 +110,9 @@ const Teacher: React.FC<TeacherProps> = ({ teacher }) => {
                         </li>
                     ))}
                 </ul>
+                {isComentsOpen && (
+                    <button className={css.trial}>Book trial lesson</button>
+                )}
             </div>
         </div>
     )

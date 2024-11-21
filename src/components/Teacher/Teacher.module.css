@@ -25,7 +25,6 @@
     border-radius: 100px;
     width: 96px;
     height: 96px;
-    background: url("path_to_image");
 }
 
 .wrapper {
@@ -144,8 +143,6 @@
     line-height: 1.5;
     text-decoration: underline;
     text-decoration-skip-ink: none;
-
-    margin-bottom: 32px;
 }
 
 .bottom {
@@ -153,6 +150,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     gap: 8px;
+    margin-top: 32px;
 }
 
 .level {
@@ -174,4 +172,22 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 1.14286;
+}
+
+.trial {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 32px;
+
+    border: transparent;
+    border-radius: 12px;
+    padding: 16px 48px;
+    width: 232px;
+    height: 60px;
+    background: #f4c550;
+
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.55556;
 }

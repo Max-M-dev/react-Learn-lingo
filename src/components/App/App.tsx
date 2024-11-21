@@ -17,6 +17,7 @@ import { RegistrationForm } from "../RegistrationForm/RegistrationForm.js";
 import { selectIsLoggedIn } from "../../redux/auth/selectors.js";
 
 
+
 function App() {
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
 

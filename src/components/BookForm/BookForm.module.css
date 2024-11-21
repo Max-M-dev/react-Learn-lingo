@@ -1,0 +1,116 @@
+
+
+.form {
+    position: relative;
+    border-radius: 30px;
+    width: 599px;
+    background: #fff;
+    padding: 64px;
+}
+
+.icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    fill: none;
+    stroke: #121417;
+    stroke-width: 2.5;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+}
+
+.text {
+    line-height: 1.375;
+    color: rgba(18, 20, 23, 0.8);
+    margin-bottom: 20px;
+}
+
+.teacher {
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.image {
+    border-radius: 100px;
+    width: 44px;
+    height: 44px;
+    margin-right: 14px;
+}
+
+.paragraph {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33333;
+    color: #8a8a89;
+}
+
+.name {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.label {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.33333;
+    /* margin-bottom: 20px; */
+}
+
+.option {
+    line-height: 1.375;
+}
+
+.radiobox {
+    margin-bottom: 40px;
+}
+
+.input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(18, 20, 23, 0.1);
+    border-radius: 12px;
+    padding: 16px 18px;
+    width: 472px;
+    height: 54px;
+}
+
+.input::placeholder {
+    line-height: 1.375;
+    color: #121417;
+}
+
+.item {
+    margin-bottom: 18px;
+}
+
+.btn {
+    margin-top: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: transparent;
+    border-radius: 12px;
+    padding: 16px 215px;
+    width: 472px;
+    height: 60px;
+    background: #f4c550;
+
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.55556;
+}
