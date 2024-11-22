@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 
 import {
     persistStore,
@@ -18,17 +18,18 @@ import { filtersReducer } from './filters/slice';
 import { useDispatch } from 'react-redux';
 
 const persistConfig = {
-    key: 'root',
+    key: 'auth',
     storage,
 };
 
+const rootReducer = combineReducers({
+    auth: persistReducer(persistConfig, authReducer),
+    teachers: teachersReducer,
+    filters: filtersReducer,
+});
 
 export const store = configureStore({
-    reducer: {
-        auth: persistReducer(persistConfig, authReducer),
-        teachers: teachersReducer,
-        filters: filtersReducer,
-    },
+    reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: {

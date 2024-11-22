@@ -36,8 +36,6 @@ export default function TeachersPage() {
         setPage(prevPage => prevPage + 1);
     };
 
-
-
     return (
         <main className={css.container}>
             {isLoading && <p>Loading teachers...</p>}

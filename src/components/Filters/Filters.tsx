@@ -2,8 +2,12 @@ import { useState } from "react"
 
 import css from "./Filters.module.css";
 
+type FiltersProps = {
+    onSearch: (value: string) => void; 
+};
 
-const Filters = ({onSearch}) => {
+
+const Filters: React.FC<FiltersProps> = ({onSearch}) => {
 
     const [selected, setSelected] = useState("");
 

@@ -9,7 +9,7 @@ import css from './TeachersList.module.css'
 import BookForm from '../BookForm/BookForm';
 
 interface TeachersListProps {
-    load: () => void;
+    load?: () => void;
 }
 
 const TeachersList: React.FC<TeachersListProps> = ({ load }) =>  {
