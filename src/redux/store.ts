@@ -15,17 +15,24 @@ import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth/slice';
 import { teachersReducer } from './teachers/slice';
 import { filtersReducer } from './filters/slice';
+import { favouritesReducer } from './favourites/slice';
 import { useDispatch } from 'react-redux';
 
-const persistConfig = {
+const authPersistConfig = {
     key: 'auth',
     storage,
 };
 
+const favouritePersistConfig = {
+    key: 'favourite',
+    storage,
+};
+
 const rootReducer = combineReducers({
-    auth: persistReducer(persistConfig, authReducer),
+    auth: persistReducer(authPersistConfig, authReducer),
     teachers: teachersReducer,
     filters: filtersReducer,
+    favourite: persistReducer(favouritePersistConfig, favouritesReducer),
 });
 
 export const store = configureStore({

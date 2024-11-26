@@ -8,10 +8,15 @@
     padding: 64px;
 }
 
-.icon {
+.close {
+    border: none;
+    background-color: transparent;
     position: absolute;
     top: 20px;
     right: 20px;
+}
+
+.icon {
     fill: none;
     stroke: #121417;
     stroke-width: 2.5;
@@ -65,15 +70,49 @@
     font-weight: 500;
     font-size: 24px;
     line-height: 1.33333;
-    /* margin-bottom: 20px; */
+    margin-bottom: 20px;
 }
 
 .option {
+    margin-left: 8px;
     line-height: 1.375;
 }
 
 .radiobox {
-    margin-bottom: 40px;
+    margin-bottom: 24px;
+}
+
+.div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.radio {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.radio:checked {
+    border-color: orange;
+}
+
+.radio:checked::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: orange;
+    border-radius: 50%;
 }
 
 .input {
@@ -98,7 +137,7 @@
 }
 
 .btn {
-    margin-top: 22px;
+    margin-top: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -113,4 +152,8 @@
     font-weight: 700;
     font-size: 18px;
     line-height: 1.55556;
+}
+
+.error {
+    color: red;
 }
