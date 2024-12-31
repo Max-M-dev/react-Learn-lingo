@@ -30,13 +30,16 @@ export const selectFilteredTeachers = createSelector(
       return [];
     }
 
-    let result: Teacher[] = [];
-    if (languageFilter && levelFilter && priceFilter) {
-      result = filterLevel(teachers, levelFilter);
+    let result: Teacher[] = teachers;
+
+    if (languageFilter) {
       result = filterLanguage(result, languageFilter);
+    }
+    if (levelFilter) {
+      result = filterLevel(result, levelFilter);
+    }
+    if (priceFilter) {
       result = filterPrice(result, priceFilter);
-    } else {
-      result = teachers;
     }
     return result;
   }
