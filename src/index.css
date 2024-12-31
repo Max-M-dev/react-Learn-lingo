@@ -1,5 +1,5 @@
 :root {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   line-height: 1.5;
   font-weight: 400;
   font-size: 16px;
@@ -11,6 +11,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --accent: #f4c550;
+  --accent-light: #fbe9ba;
 }
 
 *,
@@ -64,4 +66,8 @@ img {
 
 html {
   scroll-behavior: smooth;
+}
+
+.container {
+  padding: 0 15px;
 }

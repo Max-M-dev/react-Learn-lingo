@@ -1,34 +1,55 @@
+import Teacher from '../Teacher/Teacher';
 
+import { useSelector } from 'react-redux';
+import { selectLimit, selectPage } from '../../redux/teachers/selectors';
+import css from './TeachersList.module.css';
+import { useAppDispatch } from '../../redux/store';
+import { changePage, Teacher as TeacherType } from '../../redux/teachers/slice';
+import { selectIsLoggedIn } from '../../redux/auth/selectors';
+import { getTeacherKey } from '../../redux/favourites/selectors';
+export type TeacherListProps = {
+  list: TeacherType[];
+};
+const TeachersList: React.FC<TeacherListProps> = ({ list }) => {
+  const dispatch = useAppDispatch();
+  const isUserAuth = useSelector(selectIsLoggedIn);
 
-import Teacher from '../Teacher/Teacher'
+  const teachersFull = list;
 
-import { useSelector } from "react-redux";
-import { selectFilteredTeachers } from '../../redux/teachers/selectors';
-import css from './TeachersList.module.css'
+  const currentPage = useSelector(selectPage);
+  const limitView = useSelector(selectLimit);
+  const quantityPreviewEntries = currentPage * limitView;
 
-interface TeachersListProps {
-    load?: () => void;
-}
+  const teachers =
+    quantityPreviewEntries <= teachersFull.length
+      ? teachersFull.slice(0, quantityPreviewEntries)
+      : teachersFull;
 
-const TeachersList: React.FC<TeachersListProps> = ({ load }) =>  {
+  const isShowBtnMore = quantityPreviewEntries < teachersFull.length;
+  const handleClickMore = () => {
+    dispatch(changePage(currentPage + 1));
+  };
 
-    const teachers = useSelector(selectFilteredTeachers);
+  return (
+    <div className={css.container}>
+      {teachers.length === 0 ? (
+        <p>No teachers found</p>
+      ) : (
+        <ul>
+          {teachers.map(teacher => (
+            <li key={getTeacherKey(teacher)}>
+              <Teacher teacher={teacher} isUserAuth={isUserAuth} />
+            </li>
+          ))}
+        </ul>
+      )}
+      {isShowBtnMore && (
+        <button className={css.more} onClick={handleClickMore} type="button">
+          Load more
+        </button>
+      )}
+    </div>
+  );
+};
 
-    return (
-        <div className={css.container}>
-            {teachers.length === 0 ? (
-                <p>No teachers found</p>
-            ) : (
-                <ul>
-                    {teachers.map(teacher => (
-                        <li key={teacher.id}>
-                            <Teacher teacher={teacher} />
-                        </li>
-                    ))}
-                </ul>)}
-            <button className={css.more} onClick={load} type="button">Load more</button>
-        </div>
-    )
-}
-
-export default TeachersList
+export default TeachersList;

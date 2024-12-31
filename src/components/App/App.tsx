@@ -1,22 +1,24 @@
-// import { useState } from 'react'
+import { lazy, useState, useEffect } from 'react';
 
-import { lazy, useState, useEffect } from "react";
-
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Layout from '../Layout/Layout';
 
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
-const TeachersPage = lazy(() => import('../../pages/TeachersPage/TeachersPage'));
-const FavoritesPage = lazy(() => import('../../pages/FavoritesPage/FavoritesPage'));
-const NotFoundPage = lazy(() => import('../../pages/NotFoundPage/NotFoundPage'));
+const TeachersPage = lazy(
+  () => import('../../pages/TeachersPage/TeachersPage')
+);
+const FavoritesPage = lazy(
+  () => import('../../pages/FavoritesPage/FavoritesPage')
+);
+const NotFoundPage = lazy(
+  () => import('../../pages/NotFoundPage/NotFoundPage')
+);
 
-import './App.css'
-import { RegistrationForm } from "../RegistrationForm/RegistrationForm.js";
-import { selectIsLoggedIn } from "../../redux/auth/selectors.js";
-
-
+import './App.css';
+import { RegistrationForm } from '../RegistrationForm/RegistrationForm.js';
+import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
 
 function App() {
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
@@ -34,23 +36,23 @@ function App() {
   };
 
   useEffect(() => {
-        const handleKeyDown = (event: KeyboardEvent) => {
-            if (event.key === 'Escape') {
-                closeModal(); 
-            }
-        };
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+    };
 
-        window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keydown', handleKeyDown);
 
-        return () => {
-            window.removeEventListener('keydown', handleKeyDown);
-        };
-  }, []); 
-  
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
   useEffect(() => {
     if (isLoggedIn && !redirect) {
-      if (window.location.pathname !== "/teachers") {
-        navigate("/teachers"); 
+      if (window.location.pathname !== '/teachers') {
+        navigate('/teachers');
         setRedirect(true);
       }
     }
@@ -60,18 +62,18 @@ function App() {
     <>
       <Layout onOpenRegister={openRegisterModal}>
         <Routes>
-          <Route path="/" element={<HomePage onRegisterClick={openRegisterModal} />} />
+          <Route
+            path="/"
+            element={<HomePage onRegisterClick={openRegisterModal} />}
+          />
           <Route path="/teachers" element={<TeachersPage />} />
           <Route path="/favorites" element={<FavoritesPage />} />
-          <Route
-            path="*"
-            element={<NotFoundPage />}
-          />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
-        {isRegisterOpen && <RegistrationForm onClose={closeModal}/>}
+        {isRegisterOpen && <RegistrationForm onClose={closeModal} />}
       </Layout>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

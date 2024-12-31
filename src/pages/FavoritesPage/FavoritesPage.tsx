@@ -1,31 +1,24 @@
-
-
-// import { useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { fetchContacts } from '../../redux/contacts/operations.js'
-// import { selectError, selectIsLoading } from '../../redux/contacts/selectors.js';
-
-import TeachersList from '../../components/TeachersList/TeachersList'
-// import ContactForm from '../../components/ContactForm/ContactForm.jsx';
-import css from './FavoritesPage.module.css'
+import { useSelector } from 'react-redux';
+import TeachersList from '../../components/TeachersList/TeachersList';
+import css from './FavoritesPage.module.css';
+import { selectFavoritesState } from '../../redux/favourites/selectors';
+import { TeacherProps } from '../../components/Teacher/Teacher';
+import { Teacher } from '../../redux/teachers/slice';
 
 export default function TeachersPage() {
-    // const dispatch = useDispatch();
+  const { favourites } = useSelector(selectFavoritesState);
+  const setIsFavouritesTeacher = (
+    teacher: Teacher
+  ): TeacherProps['teacher'] => {
+    return { ...teacher, isFavourites: true };
+  };
+  const favouritesWithPropIsFavourites = favourites.map(setIsFavouritesTeacher);
 
-    // const error = useSelector(selectError);
-    // const isLoading = useSelector(selectIsLoading);
-
-    // useEffect(() => {
-    //     dispatch(fetchContacts());
-    // }, [dispatch]);
-
-    return (
-        <main className={css.container}>
-            {/* {isLoading && <p>Loading contacts...</p>}
-            {error && <p>{error}</p>} */}
-            <div className={css.wrapper}>
-                <TeachersList />
-            </div>
-        </main>
-    )
+  return (
+    <main className={css.container}>
+      <div className={css.wrapper}>
+        <TeachersList list={favouritesWithPropIsFavourites} />
+      </div>
+    </main>
+  );
 }

@@ -1,215 +1,223 @@
-
 .container {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
 
-    border-radius: 24px;
-    padding: 24px;
-    margin: 32px auto;
-    width: 1184px;
-    gap: 48px;
+  border-radius: 24px;
+  padding: 24px;
+  margin: 32px auto;
+  width: 1184px;
+  gap: 48px;
 
-    background: #fff;
+  background: #fff;
 }
 
 .box {
-    border: 3px solid #fbe9ba;
-    border-radius: 100px;
-    width: 120px;
-    height: 120px;
-    padding: 12px;
+  border: 3px solid #fbe9ba;
+  border-radius: 100px;
+  width: 120px;
+  height: 120px;
+  padding: 12px;
 }
 
 .image {
-    border-radius: 100px;
-    width: 96px;
-    height: 96px;
+  border-radius: 100px;
+  width: 96px;
+  height: 96px;
 }
 
 .wrapper {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
-    width: 968px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 968px;
 }
 
 .top {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: 968px;
-    margin-bottom: 32px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 968px;
+  margin-bottom: 32px;
 }
 
 .title {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-right: auto;
 }
 
 .grey {
-    font-weight: 500;
-    line-height: 1.5;
-    color: #8a8a89;
-    margin-bottom: 8px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #8a8a89;
+  margin-bottom: 8px;
 }
 
 .name {
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 1;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1;
 }
 
 .info {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .book {
-    fill: none;
-    stroke: black;
-    stroke-width: 1.5;
+  fill: none;
+  stroke: black;
+  stroke-width: 1.5;
 }
 
 .list {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-right: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-right: 64px;
 }
 
 .item {
-    display: flex;
-    font-weight: 500;
-    line-height: 1.5;
-    align-items: center;
-    padding: 0 8px;
+  display: flex;
+  font-weight: 500;
+  line-height: 1.5;
+  align-items: center;
+  padding: 0 8px;
 }
 
 .decor {
-    border-right: 1px solid rgba(18, 20, 23, 0.2);
+  border-right: 1px solid rgba(18, 20, 23, 0.2);
 }
 
 .star {
-    fill: #ffc531;
-    margin-right: 8px;
+  fill: #ffc531;
+  margin-right: 8px;
 }
 
 .dollar {
-    color: #38cd3e;
+  color: #38cd3e;
 }
 
 .heartBox {
-    border: none;
-    background-color: transparent;
+  border: none;
+  background-color: transparent;
 }
 
 .heart {
-    fill: none;
-    stroke: #121417;
-    stroke-width: 2;
+  fill: none;
+  stroke: #121417;
+  stroke-width: 2;
+  transition: 0.5s;
+}
+.heart:hover {
+  transform: scale(1.1);
+}
+
+.heart:hover,
+.heartActive {
+  fill: var(--accent);
+  stroke: var(--accent);
 }
 
 .active {
-    stroke: #E44848;
+  stroke: #e44848;
 }
 
 .middle {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
-    margin-bottom: 16px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin-bottom: 16px;
 }
 
 .li {
-    display: flex;
-    gap: 4px;
+  display: flex;
+  gap: 4px;
 }
 
 .text {
-    font-weight: 500;
-    line-height: 1.5;
+  font-weight: 500;
+  line-height: 1.5;
 }
 
 .lang {
-    font-weight: 500;
-    line-height: 1.5;
-    text-decoration: underline;
-    text-decoration-skip-ink: none;
+  font-weight: 500;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
 }
 
 .btn {
-    border: transparent;
-    background-color: transparent;
+  border: transparent;
+  background-color: transparent;
 
-    font-weight: 500;
-    line-height: 1.5;
-    text-decoration: underline;
-    text-decoration-skip-ink: none;
+  font-weight: 500;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
 }
 
 .bottom {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 8px;
-    margin-top: 32px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-top: 32px;
 }
 
 .level {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    border: 1px solid rgba(18, 20, 23, 0.2);
-    border-radius: 35px;
-    padding: 8px 12px;
+  border: 1px solid rgba(18, 20, 23, 0.2);
+  border-radius: 35px;
+  padding: 8px 12px;
 }
 
 .level:first-child {
-    background: #f4c550;
-    border: transparent;
+  background: #f4c550;
+  border: transparent;
 }
 
 .paragraph {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 1.14286;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14286;
 }
 
 .trial {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 32px;
 
-    border: transparent;
-    border-radius: 12px;
-    padding: 16px 48px;
-    width: 232px;
-    height: 60px;
-    background: #f4c550;
+  border: transparent;
+  border-radius: 12px;
+  padding: 16px 48px;
+  width: 232px;
+  height: 60px;
+  background: #f4c550;
 
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 1.55556;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.55556;
 }
 
 .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
